@@ -14,19 +14,19 @@ public class JZ51 {
      */
     //https://www.nowcoder.com/questionTerminal/94a4d381a68b47b7a8bed86f2975db46?answerType=1&f=discussion
 
-    public int[] multiply(int[] A) {
-        int b[]=new int[A.length];
-        for (int i = 0; i <A.length ; i++) {
-            b[i]=1;
+        public int[] multiply(int[] A) {
+            int b[]=new int[A.length];
+            for (int i = 0; i <A.length ; i++) {
+                b[i]=1;
+            }
+            for (int i = 1; i <A.length ; i++) {
+                b[i]=b[i-1]*A[i-1];
+            }
+            int tmp=1;
+            for (int i = A.length-2; i >=0 ; i--) {
+                tmp*=A[i+1];
+                b[i]*=tmp;
+            }
+            return b;
         }
-        for (int i = 1; i <A.length ; i++) {
-            b[i]=b[i-1]*A[i-1];
-        }
-        int tmp=1;
-        for (int i = A.length-2; i >=0 ; i--) {
-            tmp*=A[i+1];
-            b[i]*=tmp;
-        }
-        return b;
-    }
 }
