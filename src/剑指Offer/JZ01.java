@@ -7,6 +7,7 @@ import java.util.Scanner;
  * @author ZhuangJIe
  * @version 1.0
  * @date 2020/7/13 10:52
+ * page 44
  */
 public class JZ01 {
     /*

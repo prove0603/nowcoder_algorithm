@@ -15,25 +15,24 @@ public class JZ09 {
 
 
 //    方法一
-//    public static int counter = 0;
-//    public static void JumpFloorII(int target) {
-//        if (target == 0) {
-//            counter++;
-//        }
-//        for (int i = 1; i <= target; i++) {
-//            if ((target - i) < 0) break;
-//            JumpFloorII(target - i);
-//        }
-//    }
-
+    public static int counter = 0;
+    public static void JumpFloorII(int target) {
+        if (target == 0) {
+            counter++;
+        }
+        for (int i = 1; i <= target; i++) {
+            if ((target - i) < 0) break;
+            JumpFloorII(target - i);
+        }
+    }
 
     //方法二
-    public static int JumpFloorII(int target) {
+    public static int JumpFloorII2(int target) {
         if (target==0) return 1;
         int counter=0;
         for (int i = 1; i <= target; i++) {
             if ((target - i) < 0) break;
-            counter+=JumpFloorII(target - i);
+            counter+=JumpFloorII2(target - i);
         }
         return counter;
     }
@@ -50,6 +49,6 @@ public class JZ09 {
     所以除了第一位外，其他位的数都是前一位的数去乘以2所得到的积。
  */
     public static void main(String[] args) {
-        System.out.println(JumpFloorII(5));
+        System.out.println(JumpFloorII2(5));
     }
 }

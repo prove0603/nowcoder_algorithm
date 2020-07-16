@@ -12,6 +12,7 @@ package 剑指Offer;
             注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。
      */
 
+//  https://www.nowcoder.com/questionTerminal/9023a0c988684a53960365b889ceaf5e?f=discussion
 
 public class JZ57 {
 
@@ -19,6 +20,7 @@ public class JZ57 {
 
     public static boolean flag=false;
 
+//    方法一
     public static TreeLinkNode GetNext(TreeLinkNode pNode) {
         if (pNode==null){
             return null;
@@ -46,14 +48,30 @@ public class JZ57 {
     }
 
     public static boolean nodeEqual(TreeLinkNode a,TreeLinkNode b){
-//        if (a.val==b.val && a.left.val==b.left.val && a.right.val==b.right.val && a.next.val==b.next.val){
-//            return true;
-//        }else {
-//            return false;
-//        }
         if(a.val==b.val) return true;
         else{
             return false;
+        }
+    }
+
+//  方法二
+    public static TreeLinkNode GetNext2(TreeLinkNode pNode) {
+//        有右子树  则是右子树的最左子树
+        if (pNode.right!=null){
+            TreeLinkNode tmp=pNode.right;
+            while (tmp.left!=null){
+                tmp=tmp.left;
+            }
+            return tmp;
+//            没有 右子树  则找其父节点 且该父节点为其父节点的左子树
+        }else{
+            while (pNode.next!=null){
+                if (pNode.next.left==pNode){
+                    return pNode.next;
+                }
+                pNode=pNode.next;
+            }
+            return null;
         }
     }
 
