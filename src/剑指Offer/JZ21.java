@@ -1,5 +1,8 @@
 package 剑指Offer;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 /**
  * @author ZhuangJIe
  * @version 1.0
@@ -14,9 +17,16 @@ package 剑指Offer;
 
     */
 public class JZ21 {
-//    public boolean IsPopOrder(int [] pushA,int [] popA) {
-//        for (int i = 0; i <popA.length ; i++) {
-//
-//        }
-//    }
+    public boolean IsPopOrder(int [] pushA,int [] popA) {
+        Stack<Integer> s=new Stack<>();
+        int popIndex=0;
+        for (int i = 0; i <pushA.length ; i++) {
+            s.push(pushA[i]);
+            while (!s.isEmpty() && s.peek()==popA[popIndex]){
+                s.pop();
+                popIndex++;
+            }
+        }
+        return s.isEmpty();
+    }
 }
