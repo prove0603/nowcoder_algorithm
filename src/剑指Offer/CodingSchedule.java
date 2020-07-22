@@ -5,7 +5,8 @@ package 剑指Offer;
  * @version 1.0
  * @date 2020/7/21 16:20
  */
-public class Schedule {
+
+public class CodingSchedule {
     /*
 
         2020/07/10 :    JZ63

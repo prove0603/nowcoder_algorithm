@@ -36,7 +36,6 @@ public class JZ66 {
         if (rows>arr.length-1 || rows<0) return ;
         if (cols>arr[0].length-1 || cols<0) return ;
         if (arr[rows][cols]==1) return;
-        int tmp=countSum(rows,cols);
         if (countSum(rows,cols)<=threshold1){
             arr[rows][cols]=1;
             f(rows-1,cols);
