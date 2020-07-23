@@ -1,5 +1,6 @@
 package 剑指Offer;
 
+
 /**
  * @author ZhuangJIe
  * @version 1.0
@@ -25,18 +26,35 @@ package 剑指Offer;
     */
 public class JZ52 {
 
+    public static boolean match(char[] str, int strIndex, char[] pattern, int patternIndex){
+        if (strIndex==str.length && patternIndex==pattern.length) return true;
+        //字符串可以先走完   但是pattern 不行
+        if (strIndex!=str.length && patternIndex==pattern.length ) return false;
+        if (patternIndex+1<pattern.length && pattern[patternIndex+1] == '*'){
+            if ((strIndex != str.length && pattern[patternIndex] == str[strIndex]) || (pattern[patternIndex] == '.' && strIndex != str.length)) {
+                return match(str, strIndex, pattern, patternIndex + 2)//模式后移2，视为x*匹配0个字符
+                        || match(str, strIndex + 1, pattern, patternIndex + 2)//视为模式匹配1个字符
+                        || match(str, strIndex + 1, pattern, patternIndex);//*匹配1个，再匹配str中的下一个
+            } else {
+                return match(str, strIndex, pattern, patternIndex + 2);
+            }
+        }
+        if ((strIndex!=str.length && str[strIndex]==pattern[patternIndex]) || (strIndex!=str.length && pattern[patternIndex]=='.')){
+            return match(str,strIndex+1,pattern,patternIndex+1);
+        }
+        return false;
+    }
+
     public boolean match(char[] str, char[] pattern) {
         if (str==null || pattern==null ) return false;
         boolean flag=match(str,0,pattern,0);
         return flag;
     }
 
-    public static boolean match(char[] str, int strIndex, char[] pattern, int patternIndex){
-        if (strIndex==str.length && patternIndex==pattern.length) return true;
-        //字符串可以先走完   但是pattern 不行
-        if (strIndex!=str.length && patternIndex==pattern.length ) return false;
-        if (strIndex+1<str.length && str[strIndex+1] != '*'){
-
-        }
+    public static void main(String[] args) {
+        JZ52 jz52=new JZ52();
+        char a[]=new String("a").toCharArray();
+        char b[]=new String("ab*a").toCharArray();
+        System.out.println(jz52.match(a,0,b,0));
     }
 }

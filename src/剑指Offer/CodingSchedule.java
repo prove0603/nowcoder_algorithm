@@ -17,6 +17,7 @@ public class CodingSchedule {
         2020/07/17 :    JZ21    JZ28    JZ30    JZ31    JZ36    JZ37    JZ49    JZ40
         2020/07/20 :    JZ08    JZ10    JZ15    JZ16    JZ21
         2020/07/21 :    JZ07    JZ64    JZ65    JZ66
-
+        2020/07/21 :    JZ07    JZ64    JZ65    JZ66
+        2020/07/22 :    JZ56    JZ52
      */
 }
