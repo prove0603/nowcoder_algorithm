@@ -20,5 +20,6 @@ public class CodingSchedule {
         2020/07/21 :    JZ07    JZ64    JZ65    JZ66
         2020/07/22 :    JZ56    JZ52
         2020/07/23 :    JZ44    JZ49
+        2020/07/25 :    JZ27    JZ29    JZ32    JZ33    JZ34
      */
 }
