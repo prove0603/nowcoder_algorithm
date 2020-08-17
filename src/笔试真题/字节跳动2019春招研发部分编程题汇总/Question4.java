@@ -1,9 +1,5 @@
 package 笔试真题.字节跳动2019春招研发部分编程题汇总;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author ZhuangJIe
@@ -54,29 +50,36 @@ import java.util.HashSet;
 
     特征<1,1>在连续的帧中连续出现3次，相比其他特征连续出现的次数大，所以输出3
 
+    https://www.nowcoder.com/questionTerminal/5afcf93c419a4aa793e9b325d01957e2
  */
+
+
+
 public class Question4 {
-
-    static class Node{
-        int x;
-        int y;
-
-        Node(int x,int y){
-            this.x=x;
-            this.y=y;
-        }
-        @Override
-        public boolean equals(Object obj) {
-            Node tmp=(Node) obj;
-            if (this.x==tmp.x && this.y==tmp.y){
-                return true;
-            }else {
-                return false;
-            }
-        }
-    }
-
     public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        for (int i = 0; i <n ; i++) {
+            int max=1;
+            int m=in.nextInt();
+            HashMap<String,Integer> map=new HashMap<>();
+            HashMap<String,Integer> tmp_map=new HashMap<>();
+            for (int j = 0; j <m ; j++) {
+                int index=in.nextInt();
+                tmp_map.clear();
+                for (int k = 0; k <index ; k++) {
+                    int x=in.nextInt();
+                    int y=in.nextInt();
+                    String key=String.valueOf(x)+"-"+String.valueOf(y);
+                    tmp_map.put(key,map.getOrDefault(key,0)+1);
+                    max=Math.max(max,tmp_map.get(key));
+                }
+                map.clear();
+                map.putAll(tmp_map);
 
+            }
+            if (max<=1) System.out.println(1);
+            else System.out.println(max);
+        }
     }
 }

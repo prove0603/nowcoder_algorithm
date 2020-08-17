@@ -67,6 +67,8 @@ import java.util.Scanner;
 
  */
 public class Question2 {
+
+//    思路  以右端点为判断  符合条件的进行c 几 2计算(因为包含了右端点  所以剩下两个)  这样能保证不重复
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
         int n=in.nextInt();
@@ -75,32 +77,61 @@ public class Question2 {
         for (int i = 0; i <n ; i++) {
             arr[i]=in.nextInt();
         }
-        int counter=0;
-        for (int i = 0; i <n ; i++) {
-            int j=n-1;
-            for (j = n-1; j >=i+2 ; j--) {
-                if (arr[j]-arr[i]<=d) break;
+        long counter=0;
+        int left=0,right=2;
+        while (right<n){
+            if (arr[right]-arr[left]>d){
+                left++;
+            }else if (right-left<2){
+                right++;
+            }else {
+                counter+=cal(right-left);
+                right++;
             }
-            counter=(counter+count(j,3))%99997867;
         }
+        counter=counter%99997867;
         System.out.println(counter);
-
     }
 
-    public static int count(int a,int b){
-        int counterA=1,counterB=1,counterC=1,c=a-b;
-        while (a!=0){
-            counterA=counterA*a;
-            a--;
-        }
-        while (b!=0){
-            counterB=counterB*b;
-            b--;
-        }
-        while (c!=0){
-            counterC=counterC*c;
-            c--;
-        }
-        return counterA/(counterB*counterC);
+//    计算c 几 2
+    public static long cal(long number){
+        return number*(number-1)/2;
     }
+//    多次遍历效率太低   就算剪枝了效率还是低
+//    public static void main(String[] args) {
+//        Scanner in=new Scanner(System.in);
+//        int n=in.nextInt();
+//        int d=in.nextInt();
+//        int arr[]=new int[n];
+//        for (int i = 0; i <n ; i++) {
+//            arr[i]=in.nextInt();
+//        }
+//        int counter=0;
+//        for (int i = 0; i <n ; i++) {
+//            int j=n-1;
+//            for (j = n-1; j >=i+2 ; j--) {
+//                if (arr[j]-arr[i]<=d) break;
+//            }
+//            counter=(counter+count(j,3))%99997867;
+//        }
+//        System.out.println(counter);
+//
+//    }
+//
+//    public static int count(int a,int b){
+//        int counterA=1,counterB=1,counterC=1,c=a-b;
+//        while (a!=0){
+//            counterA=counterA*a;
+//            a--;
+//        }
+//        while (b!=0){
+//            counterB=counterB*b;
+//            b--;
+//        }
+//        while (c!=0){
+//            counterC=counterC*c;
+//            c--;
+//        }
+//        return counterA/(counterB*counterC);
+//    }
 }

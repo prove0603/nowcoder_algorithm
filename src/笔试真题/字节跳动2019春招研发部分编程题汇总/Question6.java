@@ -41,30 +41,39 @@ import java.util.Scanner;
  */
 
 public class Question6 {
+
+//    动态规划
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
         int n=in.nextInt();
-        int target=1024-n;
-        if (target==0) {
-            System.out.println(0);
-            return;
+        in.close();
+        int dp[]=new int[1024-n+1];
+        for (int i = 2; i <dp.length ; i++) {
+            dp[i]=Integer.MAX_VALUE;
         }
-        int counter=0;
-        int tmp64=target/64;
-        counter+=tmp64;
-        target=target-tmp64*64;
-        int tmp16=target/16;
-        counter+=tmp16;
-        target=target-tmp16*16;
-        int tmp4=target/4;
-        counter+=tmp4;
-        target=target-tmp4*4;
-        int tmp1=target/1;
-        counter+=tmp1;
-        System.out.println(counter);
     }
 
-//    public static int f(int coins[],int target){
-//
+    //贪心算法
+//    public static void main(String[] args) {
+//        Scanner in=new Scanner(System.in);
+//        int n=in.nextInt();
+//        int target=1024-n;
+//        if (target==0) {
+//            System.out.println(0);
+//            return;
+//        }
+//        int counter=0;
+//        int tmp64=target/64;
+//        counter+=tmp64;
+//        target=target-tmp64*64;
+//        int tmp16=target/16;
+//        counter+=tmp16;
+//        target=target-tmp16*16;
+//        int tmp4=target/4;
+//        counter+=tmp4;
+//        target=target-tmp4*4;
+//        int tmp1=target/1;
+//        counter+=tmp1;
+//        System.out.println(counter);
 //    }
 }
